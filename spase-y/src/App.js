@@ -4,21 +4,25 @@ import Header from './components/Header/Header';
 import Main from './components/Main/Main';
 import Features from './components/Features/Features';
 import Footer from './components/Footer/Footer';
-import Calendar from './components/Сalendar/Сalendar';
-import Details from './components/Details/Details';
 
-function App() {
-  return (
-    <>
-         
-      <Header />
-      <Main />
-      <Features />
-      <Footer />
-      {/* <Calendar /> */}
-      {/* <Details /> */}
-    </>
-  );
+class App extends React.Component {
+
+  state = {
+    rocket: 'Falcon 1',
+  }
+
+  render () {
+    return (
+      <>
+           
+        <Header />
+        <Main rocket={this.state.rocket} />
+        <Features />
+        <Footer />
+      </>
+    );
+  }
+  
 }
 
 export default App;
