@@ -1,6 +1,7 @@
 import React from 'react'
 import './style.css';
 import Header from './components/Header/Header';
+import Home from './components/Home/Home';
 import Main from './components/Main/Main';
 import Features from './components/Features/Features';
 import Footer from './components/Footer/Footer';
@@ -17,9 +18,8 @@ class App extends React.Component {
 
   componentDidMount() {
     this.updateRocket();
-
-    this.fetchData.getCompany()
-      .then(companyData => this.setState({companyData}))
+    this.updateCompany();
+    
 
   }
 
@@ -34,19 +34,27 @@ class App extends React.Component {
       .then(rocketFeatures => this.setState({ rocketFeatures}))
   }
 
+  updateCompany = () => {
+    this.fetchData.getCompany()
+      .then(companyData => this.setState({companyData}))
+  }
 
 
-  changeRocket = (rocket) => {
+  changeRocket = rocket => {
     this.setState({ rocket }, this.updateRocket());
   }
 
   render () {
+    console.log(this.state.companyData);
     return (
       <>
            
         <Header rockets={this.state.rockets} changeRocket={this.changeRocket} />
-        <Main rocket={this.state.rocket} />
-        <Features rocket={this.state.rocket} rocketFeatures={this.state.rocketFeatures} />
+        
+        {this.state.companyData && <Home company={this.state.companyData} />}
+
+        {/* <Main rocket={this.state.rocket} />
+        <Features rocket={this.state.rocket} rocketFeatures={this.state.rocketFeatures} /> */}
         <Footer companyData={this.state.companyData} />
       </>
     );
