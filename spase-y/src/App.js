@@ -5,7 +5,7 @@ import Home from './components/Home/Home';
 import Main from './components/Main/Main';
 import Features from './components/Features/Features';
 import Footer from './components/Footer/Footer';
-import FetchData from './service/fetchData';
+import FetchData from './service/FetchData';
 
 class App extends React.Component {
   fetchData = new FetchData();
