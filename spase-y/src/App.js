@@ -10,7 +10,6 @@ import Calendar from './components/Сalendar/Сalendar';
 import Details from './components/Details/Details';
 import Footer from './components/Footer/Footer';
 import FetchData from './service/FetchData';
-// import FetchData from './service/FetchData';
 
 class App extends React.Component {
   fetchData = new FetchData();
@@ -24,8 +23,6 @@ class App extends React.Component {
   componentDidMount() {
     this.updateRocket();
     this.updateCompany();
-    
-
   }
 
   updateRocket() {
