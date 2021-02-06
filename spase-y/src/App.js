@@ -1,11 +1,16 @@
 import React from 'react'
+import { BrowserRouter, Route } from 'react-router-dom';
+
 import './style.css';
 import Header from './components/Header/Header';
 import Home from './components/Home/Home';
 import Main from './components/Main/Main';
 import Features from './components/Features/Features';
+import Calendar from './components/Сalendar/Сalendar';
+import Details from './components/Details/Details';
 import Footer from './components/Footer/Footer';
 import FetchData from './service/FetchData';
+// import FetchData from './service/FetchData';
 
 class App extends React.Component {
   fetchData = new FetchData();
@@ -45,18 +50,29 @@ class App extends React.Component {
   }
 
   render () {
-    console.log(this.state.companyData);
     return (
-      <>
-           
+      <BrowserRouter >
         <Header rockets={this.state.rockets} changeRocket={this.changeRocket} />
-        
-        {this.state.companyData && <Home company={this.state.companyData} />}
 
-        {/* <Main rocket={this.state.rocket} />
-        <Features rocket={this.state.rocket} rocketFeatures={this.state.rocketFeatures} /> */}
+        <Route exact path="/">
+          {this.state.companyData && <Home company={this.state.companyData} />}
+        </Route>
+
+        <Route path="/rocket">
+          <Main rocket={this.state.rocket} />
+          <Features rocket={this.state.rocket} rocketFeatures={this.state.rocketFeatures} />
+        </Route>
+
+        <Route path="/calendar" >
+          <Calendar />
+        </Route>
+
+        <Route path="/details" >
+          <Details />
+        </Route>
+
         <Footer companyData={this.state.companyData} />
-      </>
+      </BrowserRouter >
     );
   }
   

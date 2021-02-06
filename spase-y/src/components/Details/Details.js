@@ -1,8 +1,12 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
+import Main from '../Main/Main';
 import './details.css';
 
 const Details = () => {
     return (
+        <>
+        <Main />
         <main className="details">
 		<div className="container">
                 <div className="details-row">
@@ -14,11 +18,12 @@ const Details = () => {
                     </div>
                 </div>
                 <div>
-                    <iframe className="details-youtube" width="560" height="315" src="https://www.youtube.com/embed/dLQ2tZEH6G0" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen />
+                    <iframe className="details-youtube" width="560" height="315" src="https://www.youtube.com/embed/dLQ2tZEH6G0" frameBorder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowFullScreen />
                 </div>
             </div>
-            <a href="calendar.html" className="button button-back">go back</a>
+            <Link to="/calendar" className="button button-back">go back</Link>
         </main>
+        </>
     )
 }
 

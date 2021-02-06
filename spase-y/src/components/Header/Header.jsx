@@ -1,5 +1,6 @@
 import React from 'react';
 import './header.css';
+import { Link, NavLink } from 'react-router-dom';
 import Logo from '../../logo.svg';
 
 
@@ -8,24 +9,25 @@ const Header = ({rockets, changeRocket}) => {
     return (
         <>
         <header className="header">
-            <img src={Logo} alt="Logo Space X" className="logo"/>
+            <Link to="/">
+                <img src={Logo} alt="Logo Space X" className="logo"/>
+            </Link>
             <nav className="main-nav nav">
                 <ul className="list">
                     {
-                        rockets.map((item, i) => <li key={i} className="item"><a href="/" onClick={ e => {
-                            e.preventDefault();
+                        rockets.map((item, i) => <li key={i} className="item"><Link to="/rocket" onClick={ () => {
                             changeRocket(item);
-                        }} className="item-link">{item}</a> </li>)
+                        }} className="item-link">{item}</Link> </li>)
                     }
                 </ul>
             </nav>
             <nav className="secondary-nav">
                 <ul className="list">
                 <li className="item">
-                    <a href="/" className="item-link">Home</a>
+                    <NavLink exact to="/" className="item-link" activeClassName="active">Home</NavLink>
                 </li>
                 <li className="item">
-                    <a href="calendar.html" className="item-link">Calendar</a>
+                    <NavLink to="/calendar" className="item-link" activeClassName="active">Calendar</NavLink>
                 </li>
                 </ul>
             </nav>
