@@ -1,9 +1,19 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
+import React, { useEffect, useState } from 'react';
+import { useHistory } from 'react-router-dom';
 import Main from '../Main/Main';
 import './details.css';
+import useLaunches from '../useLaunches/useLaunches';
 
-const Details = () => {
+const Details = (props) => {
+    const [launch, setLaunch] = useState(null);
+    const {getLaunch} = useLaunches();
+    useEffect(() => {
+        setLaunch(getLaunch(props.match.params.id))
+    });
+
+    const history = useHistory();
+
+    console.log(launch);
     return (
         <>
         <Main />
@@ -21,7 +31,7 @@ const Details = () => {
                     <iframe className="details-youtube" width="560" height="315" src="https://www.youtube.com/embed/dLQ2tZEH6G0" frameBorder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowFullScreen />
                 </div>
             </div>
-            <Link to="/calendar" className="button button-back">go back</Link>
+            <a onClick={history.goBack} className="button button-back">go back</a>
         </main>
         </>
     )
